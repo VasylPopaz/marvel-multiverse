@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fonts */
+@font-face {
+  font-family: "Poppins", sans-serif;
+  src: url("./assets/fonts/Poppins-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins", sans-serif;
+  src: url("./assets/fonts/Poppins-Medium.ttf") format("ttf");
+  font-weight: 500;
+  font-stretch: normal;
+  font-display: swap;
+}
+
 body {
-  background-color: slategrey;
+  background-color: #0c0b0b;
+  color: #fafafa;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
 }
