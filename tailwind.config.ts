@@ -12,6 +12,10 @@ export default {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
       },
+      colors: {
+        primaryBgColor: "var(--primary-bg-color)",
+        primaryTextColor: "var(--primary-text-color)",
+      },
     },
   },
   corePlugins: {
