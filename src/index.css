@@ -28,6 +28,7 @@ body {
   color: var(--primary-text-color);
   font-family: "Poppins", sans-serif;
   font-weight: 400;
+  font-size: 14px;
 }
 
 #root {
@@ -38,4 +39,12 @@ body {
 
 main {
   flex-grow: 1;
+}
+
+.social-link {
+  @apply flex size-[32px] items-center justify-center rounded-md border border-[#fafafa26] transition duration-300 group-hover:bg-primaryTextColor group-focus-visible:bg-primaryTextColor group-active:bg-primaryTextColor md:size-[40px];
+}
+
+.social-link-icon {
+  @apply size-[14px] fill-primaryTextColor transition duration-300 group-hover:fill-primaryBgColor group-focus-visible:fill-primaryBgColor group-active:fill-primaryBgColor md:size-[18px];
 }
