@@ -5,22 +5,28 @@
 :root {
   --primary-bg-color: #0c0b0b;
   --primary-text-color: #fafafa;
+  --accent-color: #34387f;
 }
 
 /* Fonts */
 @font-face {
-  font-family: "Poppins", sans-serif;
-  src: url("./assets/fonts/Poppins-Regular.ttf") format("ttf");
+  font-family: "Poppins";
+  src:
+    url("./assets/fonts/Poppins-Regular.woff2") format("woff2"),
+    url("./assets/fonts/Poppins-Regular.woff") format("woff"),
+    url("assets/fonts/Poppins-Regular.ttf") format("truetype");
   font-weight: 400;
-  font-stretch: normal;
-  font-display: swap;
+  font-style: normal;
 }
+
 @font-face {
-  font-family: "Poppins", sans-serif;
-  src: url("./assets/fonts/Poppins-Medium.ttf") format("ttf");
+  font-family: "Poppins";
+  src:
+    url("./assets/fonts/Poppins-Medium.woff2") format("woff2"),
+    url("./assets/fonts/Poppins-Medium.woff") format("woff"),
+    url("./assets/fonts/Poppins-Medium.ttf") format("truetype");
   font-weight: 500;
-  font-stretch: normal;
-  font-display: swap;
+  font-style: normal;
 }
 
 body {
@@ -47,4 +53,26 @@ main {
 
 .social-link-icon {
   @apply size-[14px] fill-primaryTextColor transition duration-300 group-hover:fill-primaryBgColor group-focus-visible:fill-primaryBgColor group-active:fill-primaryBgColor md:size-[18px];
+}
+
+.custom-blur::after {
+  content: "";
+  isolation: isolate;
+  position: absolute;
+  bottom: -80px;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: -10;
+  width: 170px;
+  height: 153px;
+  filter: blur(40px);
+  border-radius: 200000px;
+  transition: background-color 0.6s ease;
+}
+@media screen and (min-width: 768px) {
+  .custom-blur::after {
+    width: 332px;
+    height: 300px;
+    bottom: -102px;
+  }
 }

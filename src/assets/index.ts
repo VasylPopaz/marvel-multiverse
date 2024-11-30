@@ -32,8 +32,8 @@ import hulk_tab2x from "./images/home/hulk_tab2x.webp";
 import hulk2_tab1x from "./images/home/hulk2_tab1x.webp";
 import hulk2_tab2x from "./images/home/hulk2_tab2x.webp";
 
-import hulk_desk1x from "./images/home/hulk2_desk1x.webp";
-import hulk_desk2x from "./images/home/hulk2_desk1x.webp";
+import hulk_desk1x from "./images/home/hulk_desk1x.webp";
+import hulk_desk2x from "./images/home/hulk_desk2x.webp";
 import hulk2_desk1x from "./images/home/hulk2_desk1x.webp";
 import hulk2_desk2x from "./images/home/hulk2_desk2x.webp";
 
