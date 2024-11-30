@@ -10,7 +10,7 @@ export const Header = () => {
             id="search"
             width={16}
             height={16}
-            className="absolute left-[18px] top-1/2 -translate-y-1/2 stroke-white md:left-6 lg:h-[18px] lg:w-[18px]"
+            className="absolute left-[18px] top-1/2 z-[1] -translate-y-1/2 stroke-white md:left-6 lg:h-[18px] lg:w-[18px]"
           />
           <input
             type="text"

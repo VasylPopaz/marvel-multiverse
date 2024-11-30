@@ -1,7 +1,19 @@
+import { Navigate, Route, Routes } from "react-router-dom";
+import { lazy } from "react";
+
+import { SharedLayout } from "../components";
+
+const Home = lazy(() => import("../pages/Home"));
+const Characters = lazy(() => import("../pages/Characters"));
+
 export const App = () => {
   return (
-    <div className="h-screen flex justify-center items-center">
-      <h1 className="text-4xl text-slate-200">Vite + React + TypeScript</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/characters" element={<Characters />} />
+      </Route>
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 };
