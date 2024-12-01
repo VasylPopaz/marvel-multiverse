@@ -2,7 +2,7 @@ import { Icon, Logo } from "../index";
 
 export const Header = () => {
   return (
-    <header className="py-5 md:py-[26px]">
+    <header className="py-5 md:py-[25px]">
       <div className="container flex items-center justify-between">
         <Logo />
         <div className="relative flex w-[108px] items-center md:w-[130px]">

@@ -15,10 +15,7 @@ export default {
       colors: {
         primaryBgColor: "var(--primary-bg-color)",
         primaryTextColor: "var(--primary-text-color)",
-        accentColor: "var(--accent-color)",
-        pantherBlurColor: "#34387F ",
-        spiderManBlurColor: "#600404",
-        hulkBlurColor: "#5B7F3C",
+        activeItemColor: "var(--active-item-color)",
       },
     },
   },

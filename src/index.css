@@ -5,7 +5,6 @@
 :root {
   --primary-bg-color: #0c0b0b;
   --primary-text-color: #fafafa;
-  --accent-color: #34387f;
 }
 
 /* Fonts */
@@ -72,7 +71,22 @@ main {
 @media screen and (min-width: 768px) {
   .custom-blur::after {
     width: 332px;
-    height: 300px;
-    bottom: -102px;
+    height: 200px;
+    bottom: -30px;
   }
+  @media screen and (min-width: 1440px) {
+    .custom-blur::after {
+      height: 280px;
+      bottom: -70px;
+    }
+  }
+}
+
+.btn::after {
+  @apply absolute inset-0 -z-10 rotate-[-180deg] scale-0 rounded-full bg-primaryTextColor transition-transform duration-500 content-[''''];
+}
+
+.btn:hover::after,
+.btn:focus::after {
+  @apply rotate-0 scale-100;
 }

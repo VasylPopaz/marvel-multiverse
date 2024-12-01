@@ -13,6 +13,7 @@ export const Logo = () => {
         width={98}
         height={15}
         className="md:h-[31px] md:w-[202px]"
+        aria-label="Marvel logo, link to homepage"
       />
     </Link>
   );

@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 
 import { heroes } from "../constants";
 
-export const useHeroSlider = (setActiveBgColor: (color: string) => void) => {
-  const [activeItem, setActiveItem] = useState<number>(0);
+export const useHeroSlider = () => {
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const isTablet = useMediaQuery({ query: "(min-width: 768px)" });
   const isDesktop = useMediaQuery({ query: "(min-width: 1440px)" });
@@ -12,9 +12,19 @@ export const useHeroSlider = (setActiveBgColor: (color: string) => void) => {
     query: "(min-resolution: 1.5dppx), (min-device-pixel-ratio: 2)",
   });
 
-  const onChangeActiveItem = (index: number) => {
-    setActiveItem(index);
-    setActiveBgColor(heroes[index].colors.primary);
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      "--active-item-color",
+      heroes[0].colors.primary
+    );
+  }, []);
+
+  const handleHeroChange = (index: number) => {
+    setActiveIndex(index);
+    document.documentElement.style.setProperty(
+      "--active-item-color",
+      heroes[index].colors.primary
+    );
   };
 
   const listStyles = {
@@ -25,9 +35,9 @@ export const useHeroSlider = (setActiveBgColor: (color: string) => void) => {
       : `calc(335px *  ${heroes.length} + 100px)`,
     transform: isTablet
       ? isDesktop
-        ? `translateY(-${activeItem * 750}px)`
-        : `translateX(-${activeItem * 716}px)`
-      : `translateX(-${activeItem * 385}px)`,
+        ? `translateY(-${activeIndex * 750}px)`
+        : `translateX(-${activeIndex * 716}px)`
+      : `translateX(-${activeIndex * 385}px)`,
   };
 
   const getBgImage = (bgImages: {
@@ -45,8 +55,8 @@ export const useHeroSlider = (setActiveBgColor: (color: string) => void) => {
   };
 
   return {
-    activeItem,
-    onChangeActiveItem,
+    activeIndex,
+    handleHeroChange,
     listStyles,
     getBgImage,
     isTablet,

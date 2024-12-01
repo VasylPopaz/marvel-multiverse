@@ -1,28 +1,21 @@
-import clsx from "clsx";
-
 import { Icon } from "../index";
 
 import { heroes } from "../../constants";
 import { useHeroSlider } from "../../hooks";
-import { FC } from "react";
 
-interface HeroSliderProps {
-  setActiveBgColor: (color: string) => void;
-}
-
-export const HeroSlider: FC<HeroSliderProps> = ({ setActiveBgColor }) => {
-  const { activeItem, onChangeActiveItem, listStyles, getBgImage, isTablet } =
-    useHeroSlider(setActiveBgColor);
+export const HeroSlider = () => {
+  const { activeIndex, handleHeroChange, listStyles, getBgImage, isTablet } =
+    useHeroSlider();
 
   return (
-    <div className="h-[740px] w-full overflow-hidden md:h-[645px] lg:mt-[-210px] lg:h-[740px] lg:w-[736px] lg:shrink-0 lg:pt-[210px]">
+    <div className="h-[740px] w-full overflow-hidden md:h-[645px] lg:mr-[-31px] lg:mt-[-210px] lg:h-[740px] lg:w-[736px] lg:shrink-0 lg:pt-[210px]">
       <ul
         style={listStyles}
         className="flex gap-[50px] transition duration-500 md:gap-3 lg:flex-col lg:gap-[220px]"
       >
         {heroes.map(
           ({ title, description, images, bgImages, colors }, index) => (
-            <li key={index} className={`w-[335px] md:w-auto lg:w-[736px]`}>
+            <li key={index} className="w-[335px] md:w-auto lg:w-[736px]">
               <div className="relative md:flex md:flex-wrap md:gap-x-[32px] lg:-mr-8">
                 <picture>
                   <source
@@ -57,14 +50,7 @@ export const HeroSlider: FC<HeroSliderProps> = ({ setActiveBgColor }) => {
                 </picture>
 
                 <div
-                  className={clsx(
-                    "custom-blur relative mb-[14px] ml-auto h-[256px] w-[190px] rounded-[4px] bg-[#171717] md:m-0 md:h-[540px] md:w-[336px] lg:mt-[-210px] lg:h-[540px] lg:w-[352px]",
-                    {
-                      "after:bg-pantherBlurColor": activeItem === 0,
-                      "after:bg-spiderManBlurColor": activeItem === 1,
-                      "after:bg-hulkBlurColor": activeItem === 2,
-                    }
-                  )}
+                  className="custom-blur after:bg-activeItemColor relative mb-[14px] ml-auto h-[256px] w-[190px] rounded-[4px] bg-[#171717] md:m-0 md:h-[540px] md:w-[336px] lg:mt-[-210px] lg:h-[540px] lg:w-[352px]"
                   style={{
                     backgroundImage: getBgImage(bgImages),
                     backgroundRepeat: "no-repeat",
@@ -85,17 +71,13 @@ export const HeroSlider: FC<HeroSliderProps> = ({ setActiveBgColor }) => {
                   </div>
                   <Icon
                     id="arrow"
-                    style={{
-                      fill: `${colors.primary}`,
-                      stroke: `${colors.primary}`,
-                    }}
-                    className={`absolute bottom-4 right-4 hidden h-[32px] w-[32px] md:block`}
+                    className="fill-activeItemColor stroke-activeItemColor absolute bottom-4 right-4 hidden h-[32px] w-[32px] transition duration-500 md:block"
                   />
                 </div>
-                <div className="relative bottom-0 right-0 ml-auto flex w-[190px] gap-[14px] pt-4 text-[12px] leading-[1.17] tracking-[-0.02em] md:mt-[-63px] md:w-[336px] md:gap-[54px] lg:absolute lg:bottom-[81px] lg:right-[32px] lg:w-[320px] lg:gap-[59px]">
+                <div className="relative bottom-0 right-0 ml-auto flex w-[190px] gap-[14px] pt-4 text-[12px] leading-[1.17] tracking-[-0.02em] md:mt-[-63px] md:w-[336px] md:gap-[52px] lg:absolute lg:bottom-[81px] lg:right-[63px] lg:w-[320px] lg:gap-[58px]">
                   <Icon
                     id="line-triangle"
-                    className="absolute left-0 top-[-5px] h-[6px] w-[190px] fill-[#fafafa26] md:h-[11px] md:w-[336px] lg:w-[320px]"
+                    className="absolute left-0 top-[-4px] h-[6px] w-[190px] fill-[#fafafa26] md:top-[-6px] md:h-[11px] md:w-[336px] lg:w-[320px]"
                   />
                   <p>Characters</p>
                   <p className="text-[#fafafa7f;]">{description}</p>
@@ -105,16 +87,17 @@ export const HeroSlider: FC<HeroSliderProps> = ({ setActiveBgColor }) => {
           )
         )}
       </ul>
-      <ul className="absolute bottom-[-10px] right-1/2 z-[1] flex h-[4px] translate-x-1/2 justify-center gap-[14px] md:bottom-[-40px] lg:bottom-[50%] lg:left-[42%] lg:w-[4px] lg:translate-x-0 lg:flex-col">
-        {heroes.map((_, index) => (
+      <ul className="absolute bottom-[-10px] right-1/2 z-[1] flex h-[4px] translate-x-1/2 justify-center gap-[14px] md:bottom-[-8px] lg:bottom-[48%] lg:left-[44%] lg:w-[4px] lg:translate-x-0 lg:flex-col">
+        {heroes.map((hero, index) => (
           <li key={index}>
             <button
               type="button"
+              aria-label={`View ${hero.title}`}
               style={{
-                backgroundColor: `${index === activeItem ? heroes[index].colors.primary : ""}`,
+                backgroundColor: `${index === activeIndex ? hero.colors.primary : ""}`,
               }}
-              className={`h-[4px] w-[72px] bg-[#171717cc] outline-none transition duration-500 hover:scale-105 focus-visible:scale-110 md:w-[100px] lg:h-[100px] lg:w-[4px]`}
-              onClick={() => onChangeActiveItem(index)}
+              className="hover:from-activeItemColor focus-visible:from-activeItemColor h-[4px] w-[72px] bg-[#171717cc] outline-none transition duration-500 hover:scale-105 hover:bg-gradient-to-r hover:to-[#171717cc] focus-visible:scale-110 focus-visible:bg-gradient-to-r focus-visible:to-[#171717cc] md:w-[100px] lg:h-[100px] lg:w-[4px] hover:lg:bg-gradient-to-t focus-visible:lg:bg-gradient-to-t"
+              onClick={() => handleHeroChange(index)}
             ></button>
           </li>
         ))}

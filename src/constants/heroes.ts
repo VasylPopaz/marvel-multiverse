@@ -57,7 +57,7 @@ export const heroes = [
   {
     title: "Spider Man",
     description: decodeHTML(
-      "With amazing spider-like abilities, teenage science whiz Peter Parker fights crime and dreams of becoming an Avenger as Spider-Man."
+      "With amazing spider-like abilities, teenage science whiz Peter Parker&nbsp; fights crime and dreams of becoming an Avenger as Spider-Man."
     ),
     images: {
       mob: [spiderMan_tab1x, spiderMan_tab2x],
