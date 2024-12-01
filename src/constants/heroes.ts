@@ -29,11 +29,14 @@ import {
   spiderMan_tab2x,
 } from "../assets";
 
+import { decodeHTML } from "../helpers";
+
 export const heroes = [
   {
     title: "Black Panther",
-    description:
-      "T’Challa is the king of the secretive and highly advanced African nation of Wakanda - as well as the powerful warrior known as the Black Panther.",
+    description: decodeHTML(
+      "T&#8217;Challa is the king of the secretive and highly advanced African nation of Wakanda&nbsp; - as well as the powerful warrior known as the Black Panther."
+    ),
     images: {
       mob: [panther_mob1x, panther_mob2x],
       tab: [panther_tab1x, panther_tab2x],
@@ -53,8 +56,9 @@ export const heroes = [
 
   {
     title: "Spider Man",
-    description:
-      "With amazing spider-like abilities, teenage science whiz Peter Parker fights crime and dreams of becoming an Avenger as Spider-Man.",
+    description: decodeHTML(
+      "With amazing spider-like abilities, teenage science whiz Peter Parker fights crime and dreams of becoming an Avenger as Spider-Man."
+    ),
     images: {
       mob: [spiderMan_tab1x, spiderMan_tab2x],
       tab: [spiderMan_tab1x, spiderMan_tab2x],
@@ -73,8 +77,9 @@ export const heroes = [
   },
   {
     title: "Hulk",
-    description:
-      "Exposed to heavy doses of gamma radiation, scientist Bruce Banner transforms into the mean, green rage machine called the Hulk.",
+    description: decodeHTML(
+      "Exposed to heavy doses of gamma radiation, scientist Bruce Banner transforms into the mean, green rage machine called the Hulk."
+    ),
     images: {
       mob: [hulk_tab1x, hulk_tab2x],
       tab: [hulk_tab1x, hulk_tab2x],
