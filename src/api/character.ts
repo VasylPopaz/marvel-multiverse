@@ -27,7 +27,10 @@ export const getRandomCharacters = wrapErrorHandling<
   const results = await Promise.allSettled(characterPromises);
 
   const characters = results
-    .filter((res) => res.status === "fulfilled")
+    .filter(
+      (res): res is PromiseFulfilledResult<Character | null> =>
+        res.status === "fulfilled"
+    )
     .map(({ value }) => value)
     .filter(
       (character): character is Character =>

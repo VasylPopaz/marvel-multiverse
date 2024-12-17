@@ -1,8 +1,19 @@
 import { Link } from "react-router-dom";
+import { useQuery } from "react-query";
 
-import { HeroSlider } from "../components";
+import { HeroSlider, RandomCharactersSlider } from "../components";
+
+import { getRandomCharacters } from "../api";
 
 const Home = () => {
+  const { data: characters } = useQuery(
+    "randomCharacters",
+    getRandomCharacters,
+    {
+      refetchOnWindowFocus: false,
+    }
+  );
+
   return (
     <>
       <section
@@ -27,7 +38,7 @@ const Home = () => {
             </p>
             <Link
               to="/characters"
-              className="btn bg-activeItemColor relative z-[1] flex h-[36px] w-[142px] items-center justify-center overflow-hidden rounded-[1000px] px-5 py-2 text-center text-[12px] font-medium uppercase leading-[1.33] outline-none transition duration-500 hover:text-primaryBgColor focus-visible:text-primaryBgColor md:h-[42px] md:w-[167px] md:text-[14px] md:leading-[1.29]"
+              className="btn relative z-[1] flex h-[36px] w-[142px] items-center justify-center overflow-hidden rounded-[1000px] bg-activeItemColor px-5 py-2 text-center text-[12px] font-medium uppercase leading-[1.33] outline-none transition duration-500 hover:text-primaryBgColor focus-visible:text-primaryBgColor md:h-[42px] md:w-[167px] md:text-[14px] md:leading-[1.29]"
             >
               All characters
             </Link>
@@ -37,9 +48,12 @@ const Home = () => {
       </section>
       <section id="random-characters" className="pb-[80px] md:pb-[128px]">
         <div className="container">
-          <h2 className="text-[28px] font-medium uppercase leading-[1.14] md:text-[44px] md:leading-[1]">
+          <h2 className="mb-[44px] text-[28px] font-medium uppercase leading-[1.14] md:text-[44px] md:leading-[1]">
             Random characters
           </h2>
+          {characters?.length ? (
+            <RandomCharactersSlider characters={characters} />
+          ) : null}
         </div>
       </section>
     </>

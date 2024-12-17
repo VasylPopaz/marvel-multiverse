@@ -5,3 +5,4 @@ export * from "./HeroSlider/HeroSlider";
 export * from "./Icon/Icon";
 export * from "./Logo/Logo";
 export * from "./SharedLayout/SharedLayout";
+export * from "./RandomCharactersSlider/RandomCharactersSlider";
