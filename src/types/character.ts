@@ -8,4 +8,14 @@ export interface Character {
     path: string;
     extension: string;
   };
+  comics: {
+    available: number;
+    collectionURI: string;
+    items: [
+      {
+        resourceURI: string;
+        name: string;
+      },
+    ];
+  };
 }
