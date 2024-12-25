@@ -61,7 +61,7 @@ import hela from "./images/characters/hela.webp";
 import hulk from "./images/characters/hulk.webp";
 import ironMan from "./images/characters/iron-man.webp";
 import kang from "./images/characters/kang.webp";
-import kariMordo from "./images/characters/kari-mordo.webp";
+import karlMordo from "./images/characters/karl-mordo.webp";
 import killmonger from "./images/characters/killmonger.webp";
 import lizard from "./images/characters/lizard.webp";
 import loki from "./images/characters/loki.webp";
@@ -144,7 +144,7 @@ export {
   hulk,
   ironMan,
   kang,
-  kariMordo,
+  karlMordo,
   killmonger,
   lizard,
   loki,

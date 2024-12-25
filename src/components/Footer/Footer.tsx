@@ -11,16 +11,16 @@ export const Footer = () => {
         <Logo />
         <Link
           to="/characters"
-          className="text-[14px] leading-[1.29] md:text-[16px] md:leading-[1.12]"
+          className="link relative text-[14px] leading-[1.29] transition duration-300 md:text-[16px] md:leading-[1.12]"
         >
           Characters
         </Link>
         <ul className="flex gap-[14px]">
           {socialLinks.map(({ link, icon }, index) => (
-            <li className="group" key={index}>
+            <li key={index}>
               <Link
                 to={link}
-                className="social-link"
+                className="social-link group"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${icon} link`}
