@@ -50,7 +50,7 @@ export const HeroSlider = () => {
                 </picture>
 
                 <div
-                  className="custom-blur after:bg-activeItemColor relative mb-[14px] ml-auto h-[256px] w-[190px] rounded-[4px] bg-[#171717] md:m-0 md:h-[540px] md:w-[336px] lg:mt-[-210px] lg:h-[540px] lg:w-[352px]"
+                  className="custom-blur relative mb-[14px] ml-auto h-[256px] w-[190px] rounded-[4px] bg-[#171717] after:bg-activeItemColor md:m-0 md:h-[540px] md:w-[336px] lg:mt-[-210px] lg:h-[540px] lg:w-[352px]"
                   style={{
                     backgroundImage: getBgImage(bgImages),
                     backgroundRepeat: "no-repeat",
@@ -71,7 +71,7 @@ export const HeroSlider = () => {
                   </div>
                   <Icon
                     id="arrow"
-                    className="fill-activeItemColor stroke-activeItemColor absolute bottom-4 right-4 hidden h-[32px] w-[32px] transition duration-500 md:block"
+                    className="absolute bottom-4 right-4 hidden h-[32px] w-[32px] fill-activeItemColor stroke-activeItemColor transition duration-500 md:block"
                   />
                 </div>
                 <div className="relative bottom-0 right-0 ml-auto flex w-[190px] gap-[14px] pt-4 text-[12px] leading-[1.17] tracking-[-0.02em] md:mt-[-63px] md:w-[336px] md:gap-[52px] lg:absolute lg:bottom-[81px] lg:right-[63px] lg:w-[320px] lg:gap-[58px]">
@@ -89,14 +89,16 @@ export const HeroSlider = () => {
       </ul>
       <ul className="absolute bottom-[-10px] right-1/2 z-[1] flex h-[4px] translate-x-1/2 justify-center gap-[14px] md:bottom-[-8px] lg:bottom-[48%] lg:left-[44%] lg:w-[4px] lg:translate-x-0 lg:flex-col">
         {heroes.map((hero, index) => (
-          <li key={index}>
+          <li key={index} className="flex items-center justify-center">
             <button
               type="button"
               aria-label={`View ${hero.title}`}
-              style={{
-                backgroundColor: `${index === activeIndex ? hero.colors.primary : ""}`,
-              }}
-              className="hover:from-activeItemColor focus-visible:from-activeItemColor h-[4px] w-[72px] bg-[#171717cc] outline-none transition duration-500 hover:scale-105 hover:bg-gradient-to-r hover:to-[#171717cc] focus-visible:scale-110 focus-visible:bg-gradient-to-r focus-visible:to-[#171717cc] md:w-[100px] lg:h-[100px] lg:w-[4px] hover:lg:bg-gradient-to-t focus-visible:lg:bg-gradient-to-t"
+              style={
+                index === activeIndex
+                  ? { backgroundColor: hero.colors.primary }
+                  : {}
+              }
+              className="h-[4px] w-[72px] bg-[#171717cc] outline-none transition duration-500 hover:scale-[115%] hover:bg-gradient-to-r hover:from-activeItemColor hover:to-[#171717cc] focus-visible:scale-[115%] focus-visible:bg-gradient-to-r focus-visible:from-activeItemColor focus-visible:to-[#171717cc] md:w-[100px] lg:h-[100px] lg:w-[4px] hover:lg:bg-gradient-to-t focus-visible:lg:bg-gradient-to-t"
               onClick={() => handleHeroChange(index)}
             ></button>
           </li>

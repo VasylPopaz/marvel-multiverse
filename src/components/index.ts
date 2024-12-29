@@ -6,3 +6,5 @@ export * from "./Icon/Icon";
 export * from "./Logo/Logo";
 export * from "./SharedLayout/SharedLayout";
 export * from "./RandomCharactersSlider/RandomCharactersSlider";
+export * from "./Modal/Modal";
+export * from "./CharacterDetails/CharacterDetails";
