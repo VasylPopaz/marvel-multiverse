@@ -27,7 +27,7 @@ export const Modal = ({
       <div
         ref={modalRef}
         tabIndex={-1}
-        className="relative z-10 max-h-[98dvh] max-w-[335px] bg-primaryBgColor px-[20px] py-[40px] md:max-w-[600px] md:px-[32px] md:py-[50px] lg:max-w-[1000px]"
+        className="relative z-10 max-h-[98dvh] max-w-[335px] rounded-[8px] bg-primaryBgColor px-[20px] py-[40px] md:max-w-[600px] md:px-[32px] md:py-[50px] lg:max-w-[1100px] lg:py-[64px]"
       >
         <button
           type="button"
