@@ -5,6 +5,12 @@ export interface Comic {
   modified: string;
   format: string;
   pageCount: number;
+  urls: [
+    {
+      type: string;
+      url: string;
+    },
+  ];
   thumbnail: {
     path: string;
     extension: string;
