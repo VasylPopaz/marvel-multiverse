@@ -82,7 +82,7 @@ export const RandomCharactersSlider = ({
               alt={activeCharacter.name || "Character"}
               width={335}
               height={335}
-              className={`size-full object-cover transition duration-500 focus-visible:scale-110 group-hover:scale-110 ${isAnimating ? "translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
+              className={`size-full object-cover transition duration-500 group-hover:scale-110 group-focus-visible:scale-110 ${isAnimating ? "translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
             />
           </div>
           <ul className="flex flex-col gap-[32px]">
