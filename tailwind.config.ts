@@ -17,6 +17,16 @@ export default {
         primaryTextColor: "var(--primary-text-color)",
         activeItemColor: "var(--active-item-color)",
       },
+      animation: {
+        spinPulse: "spinPulse 2.5s linear infinite",
+      },
+      keyframes: {
+        spinPulse: {
+          "0%, 100%": { transform: "rotate(0deg)", opacity: 1 },
+          "50%": { transform: "rotate(180deg)", opacity: 0.5 },
+          "100%": { transform: "rotate(360deg)", opacity: 1 },
+        },
+      },
     },
   },
   corePlugins: {

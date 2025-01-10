@@ -8,3 +8,4 @@ export * from "./SharedLayout/SharedLayout";
 export * from "./RandomCharactersSlider/RandomCharactersSlider";
 export * from "./Modal/Modal";
 export * from "./CharacterDetails/CharacterDetails";
+export * from "./Loader/Loader";

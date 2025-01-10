@@ -91,6 +91,8 @@ import wong from "./images/characters/wong.webp";
 import yelenaBelova from "./images/characters/yelena-belova.webp";
 import yondu from "./images/characters/yondu.webp";
 
+import loaderImg from "./images/loader.webp";
+
 export {
   Icons,
   panther_mob1x,
@@ -173,4 +175,5 @@ export {
   wong,
   yelenaBelova,
   yondu,
+  loaderImg,
 };

@@ -1,14 +1,14 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
-import { Footer, Header } from "../index";
+import { Footer, Header, Loader } from "../index";
 
 export const SharedLayout = () => {
   return (
     <>
       <Header />
       <main>
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>

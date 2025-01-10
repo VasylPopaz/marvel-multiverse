@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 
-import { HeroSlider, RandomCharactersSlider } from "../components";
+import { HeroSlider, Loader, RandomCharactersSlider } from "../components";
 
 import { getRandomCharacters } from "../api";
 
 const Home = () => {
-  const { data: characters } = useQuery(
+  const { data: characters, isLoading } = useQuery(
     "randomCharacters",
     getRandomCharacters,
     {
@@ -21,7 +21,6 @@ const Home = () => {
         className="pb-[72px] pt-6 md:pb-[164px] md:pt-[54px] lg:pb-[168px] lg:pt-[116px]"
       >
         <div className="container relative lg:flex lg:gap-[134px]">
-          {" "}
           <div className="mb-10 md:mb-[32px] lg:mb-0 lg:w-[538px]">
             <p className="mb-[14px] uppercase leading-[1.29] text-[#ffffffb2] md:mb-4 md:text-[18px] md:leading-[1.6]">
               Web-based platform
@@ -56,6 +55,7 @@ const Home = () => {
           ) : null}
         </div>
       </section>
+      {isLoading && <Loader />}
     </>
   );
 };
