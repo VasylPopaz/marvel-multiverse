@@ -71,6 +71,7 @@ export const CharacterDetails = ({ character }: CharacterDetailsProps) => {
                           alt={comic.title}
                           width={263}
                           height={263}
+                          loading="lazy"
                           className="size-full rounded-[8px] object-cover transition duration-500 group-hover:scale-110 group-focus-visible:scale-110"
                         />
                       </div>
