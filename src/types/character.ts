@@ -19,3 +19,10 @@ export interface Character {
     ];
   };
 }
+
+export interface CharactersResponse {
+  limit: number;
+  total: number;
+  totalPages: number;
+  results: Character[];
+}
