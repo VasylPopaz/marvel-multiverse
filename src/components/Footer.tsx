@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-import { Icon, Logo } from "../index";
+import { Icon, Logo } from "../components";
 
-import { socialLinks } from "../../constants";
+import { socialLinks } from "../constants";
 
 export const Footer = () => {
   return (

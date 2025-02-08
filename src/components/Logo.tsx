@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { Icon } from "../index";
+import { Icon } from "../components";
 
 export const Logo = () => {
   return (

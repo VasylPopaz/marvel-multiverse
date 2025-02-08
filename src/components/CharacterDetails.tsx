@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 
-import { getComicsByIds } from "../../api";
-import type { Character } from "../../types";
-import { getFormattedDate } from "../../helpers";
-import { charactersImages } from "../../constants";
-import { Loader } from "../Loader/Loader";
+import { Loader } from "../components";
+
+import { getComicsByIds } from "../api";
+import type { Character } from "../types";
+import { getFormattedDate } from "../helpers";
+import { charactersImages } from "../constants";
 
 interface CharacterDetailsProps {
   character: Character;

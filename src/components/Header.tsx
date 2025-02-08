@@ -1,4 +1,4 @@
-import { Icon, Logo } from "../index";
+import { Icon, Logo } from "../components";
 
 export const Header = () => {
   return (

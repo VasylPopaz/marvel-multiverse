@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 
-import { Icon } from "../index";
+import { Icon } from "../components";
 
 interface ModalProps {
   children: React.ReactNode;

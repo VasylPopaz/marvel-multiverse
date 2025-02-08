@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { CharacterDetails, Modal } from "../index";
+import { CharacterDetails, Modal } from "../components";
 
-import { useModal } from "../../hooks";
-import type { Character } from "../../types";
-import { charactersImages } from "../../constants";
+import { useModal } from "../hooks";
+import type { Character } from "../types";
+import { charactersImages } from "../constants";
 
 interface RandomCharactersSliderProps {
   characters: Character[];

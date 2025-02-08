@@ -1,4 +1,4 @@
-import { loaderImg } from "../../assets";
+import { loaderImg } from "../assets";
 
 export const Loader = () => {
   return (

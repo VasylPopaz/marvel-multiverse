@@ -1,4 +1,4 @@
-import { Icons } from "../../assets";
+import { Icons } from "../assets";
 
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   id: string;

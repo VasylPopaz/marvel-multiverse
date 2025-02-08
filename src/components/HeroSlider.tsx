@@ -1,7 +1,7 @@
-import { Icon } from "../index";
+import { Icon } from "../components";
 
-import { heroes } from "../../constants";
-import { useHeroSlider } from "../../hooks";
+import { heroes } from "../constants";
+import { useHeroSlider } from "../hooks";
 
 export const HeroSlider = () => {
   const { activeIndex, handleHeroChange, listStyles, getBgImage, isTablet } =
