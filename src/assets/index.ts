@@ -91,6 +91,10 @@ import wong from "./images/characters/wong.webp";
 import yelenaBelova from "./images/characters/yelena-belova.webp";
 import yondu from "./images/characters/yondu.webp";
 
+import incognitoImg from "./images/characters/incognito.webp";
+
+import comicImg from "./images/comic_img.webp";
+
 import loaderImg from "./images/loader.webp";
 
 export {
@@ -175,5 +179,7 @@ export {
   wong,
   yelenaBelova,
   yondu,
+  incognitoImg,
   loaderImg,
+  comicImg,
 };

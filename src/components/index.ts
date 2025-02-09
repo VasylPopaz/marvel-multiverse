@@ -12,3 +12,5 @@ export * from "./Loader";
 export * from "./CharactersList/CharactersList";
 export * from "./CharactersList/CharactersListItem";
 export * from "./Pagination";
+export * from "./ComicsList/ComicsList";
+export * from "./ComicsList/ComicsListItem";

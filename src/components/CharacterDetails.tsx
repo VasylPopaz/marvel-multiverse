@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 
-import { Loader } from "../components";
+import { ComicsList, Loader } from "../components";
 
 import { getComicsByIds } from "../api";
 import type { Character } from "../types";
@@ -13,7 +12,7 @@ interface CharacterDetailsProps {
 }
 
 export const CharacterDetails = ({ character }: CharacterDetailsProps) => {
-  const { id, name, description, modified, comics } = character;
+  const { id, name, description, modified, comics, avatar } = character;
 
   const ids = comics.items.map(({ resourceURI }) => resourceURI.split("/")[6]);
 
@@ -25,13 +24,14 @@ export const CharacterDetails = ({ character }: CharacterDetailsProps) => {
       keepPreviousData: true,
     }
   );
+  const characterImage = charactersImages[id] || avatar;
   const formattedModified = getFormattedDate(modified);
 
   return (
     <>
       <div className="lg:flex lg:gap-[30px]">
         <img
-          src={charactersImages[id]}
+          src={characterImage}
           alt={name}
           width={295}
           height={387}
@@ -54,40 +54,7 @@ export const CharacterDetails = ({ character }: CharacterDetailsProps) => {
               <h3 className="mb-[16px] text-[18px] font-medium leading-[1.33] tracking-[-0.02em] md:text-[24px] md:leading-[1]">
                 List of comics
               </h3>
-              <ul className="flex flex-col gap-[32px] md:flex-row md:flex-wrap md:gap-x-[18px]">
-                {fetchedComics?.map((comic) => (
-                  <li key={comic.id} className="group md:w-[150px]">
-                    <Link
-                      to={comic.urls[0].url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <div className="mb-[16px] size-[263px] overflow-hidden rounded-[8px] md:h-[200px] md:w-[154px]">
-                        <img
-                          src={
-                            comic.thumbnail.path +
-                            "." +
-                            comic.thumbnail.extension
-                          }
-                          alt={comic.title}
-                          width={263}
-                          height={263}
-                          loading="lazy"
-                          className="size-full rounded-[8px] object-cover transition duration-500 group-hover:scale-110 group-focus-visible:scale-110"
-                        />
-                      </div>
-                      <h4 className="mb-[4px] text-[14px] font-medium leading-[1.29] tracking-[-0.02em]">
-                        {comic.title.replace(/([#]).*/, "")}
-                      </h4>
-                      <p className="text-[12px] leading-[1.17] text-[#fafafa7f]">
-                        {comic.creators.items.find(
-                          (item) => item.role === "writer"
-                        )?.name || "Author"}
-                      </p>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <ComicsList comics={fetchedComics ?? []} />
               {isLoading && <Loader />}
             </div>
           ) : null}
