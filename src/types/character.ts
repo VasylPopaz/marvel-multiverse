@@ -4,6 +4,7 @@ export interface Character {
   description: string;
   modified: string;
   resourceURI: string;
+  avatar?: string;
   thumbnail: {
     path: string;
     extension: string;
