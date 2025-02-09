@@ -10,7 +10,6 @@ export const useModal = () => {
   }, []);
 
   useEffect(() => {
-    console.log();
     if (modalRef.current && isOpenModal) {
       modalRef.current.focus();
     }
