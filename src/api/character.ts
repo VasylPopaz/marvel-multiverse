@@ -1,9 +1,33 @@
 import { QueryFunctionContext } from "react-query";
+import { AxiosResponse } from "axios";
 
 import { marvelAPI } from "./marvelAPI";
-import type { Character } from "../types";
 import { charactersIds } from "../constants";
 import { getRandomIds, wrapErrorHandling } from "../helpers";
+import type { Character, CharactersResponse } from "../types";
+
+interface Params {
+  limit: number;
+  offset: number;
+  nameStartsWith?: string;
+  modifiedSince?: Date;
+  orderBy?: "name" | "-name" | "modified" | "-modified";
+}
+
+export const getCharacters = wrapErrorHandling<CharactersResponse, Params>(
+  async (params) => {
+    const {
+      data: { data },
+    } = await marvelAPI.get<AxiosResponse<CharactersResponse>>("/characters", {
+      params,
+    });
+
+    return {
+      ...data,
+      totalPages: Math.floor(data.total / data.limit),
+    };
+  }
+);
 
 export const getCharacterById = wrapErrorHandling<Character, number>(
   async (id: number) => {
