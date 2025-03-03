@@ -37,7 +37,7 @@ const Home = () => {
             </p>
             <Link
               to="/characters"
-              className="btn relative z-[1] flex h-[36px] w-[142px] items-center justify-center overflow-hidden rounded-[1000px] bg-activeItemColor px-5 py-2 text-center text-[12px] font-medium uppercase leading-[1.33] outline-none transition duration-500 hover:text-primaryBgColor focus-visible:text-primaryBgColor md:h-[42px] md:w-[167px] md:text-[14px] md:leading-[1.29]"
+              className="btn relative z-[1] flex h-[36px] w-[142px] items-center justify-center overflow-hidden rounded-[1000px] bg-activeItemColor px-5 py-2 text-center text-[12px] font-medium uppercase leading-[1.33] transition duration-500 hover:text-primaryBgColor focus-visible:text-primaryBgColor md:h-[42px] md:w-[167px] md:text-[14px] md:leading-[1.29]"
             >
               All characters
             </Link>
