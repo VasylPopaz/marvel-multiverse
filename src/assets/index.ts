@@ -95,6 +95,9 @@ import incognitoImg from "./images/characters/incognito.webp";
 
 import comicImg from "./images/comic_img.webp";
 
+import noResultsImg1x from "./images/no-results@1x.webp";
+import noResultsImg2x from "./images/no-results@2x.webp";
+
 import loaderImg from "./images/loader.webp";
 
 export {
@@ -180,6 +183,8 @@ export {
   yelenaBelova,
   yondu,
   incognitoImg,
-  loaderImg,
   comicImg,
+  noResultsImg1x,
+  noResultsImg2x,
+  loaderImg,
 };

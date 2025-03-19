@@ -14,3 +14,4 @@ export * from "./CharactersList/CharactersListItem";
 export * from "./Pagination";
 export * from "./ComicsList/ComicsList";
 export * from "./ComicsList/ComicsListItem";
+export * from "./NoHeroesFound";

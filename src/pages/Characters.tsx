@@ -64,7 +64,6 @@ const Characters = () => {
     <>
       <section className="characters-hero-bg pb-[20px] pt-[150px] md:pb-[32px] md:pt-[188px] lg:pb-[64px]">
         <div className="container">
-          {" "}
           <p className="mb-[14px] uppercase leading-[1.29] text-[#ffffffb2] md:mb-[26px] md:text-[18px] md:leading-[1.6] lg:mb-[16px]">
             Web-based platform
           </p>
