@@ -45,16 +45,17 @@ const Home = () => {
           <HeroSlider />
         </div>
       </section>
-      <section id="random-characters" className="pb-[80px] md:pb-[128px]">
-        <div className="container">
-          <h2 className="mb-[44px] text-[28px] font-medium uppercase leading-[1.14] md:text-[44px] md:leading-[1]">
-            Random characters
-          </h2>
-          {characters?.length ? (
+      {characters?.length ? (
+        <section id="random-characters" className="pb-[80px] md:pb-[128px]">
+          <div className="container">
+            <h2 className="mb-[44px] text-[28px] font-medium uppercase leading-[1.14] md:text-[44px] md:leading-[1]">
+              Random characters
+            </h2>
             <RandomCharactersSlider characters={characters} />
-          ) : null}
-        </div>
-      </section>
+          </div>
+        </section>
+      ) : null}
+
       {isLoading && <Loader />}
     </>
   );

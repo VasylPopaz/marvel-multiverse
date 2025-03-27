@@ -26,9 +26,7 @@ export const SortDropdown = ({ onChange }: SortDropdownProps) => {
     };
   }, []);
 
-  const handleListClick = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
 
   const handleLabelClick = ({
     label,
@@ -44,19 +42,16 @@ export const SortDropdown = ({ onChange }: SortDropdownProps) => {
 
   return (
     <div ref={sortRef} className="relative w-[169px] md:w-[195px]">
-      <input
-        type="text"
-        onClick={handleListClick}
-        value={selectedOption}
-        className="h-[46px] w-full cursor-pointer rounded-[100px] border-[2px] border-[#34387f] bg-transparent py-[14px] pl-[24px] text-[14px] leading-[1.29] text-[#fafafa] md:h-[50px] md:py-[16px] md:text-[16px] md:leading-[1.12]"
-        readOnly
-      />
-
-      <Icon
-        id="chevron-left"
-        className={`absolute right-[28px] top-1/2 size-[15px] -translate-y-1/2 transition duration-300 ${isDropdownOpen ? "rotate-90" : "-rotate-90"} cursor-pointer fill-[#fafafa]`}
-        onClick={handleListClick}
-      />
+      <div
+        className="relative h-[46px] w-full cursor-pointer rounded-[100px] border-[2px] border-[#34387f] bg-transparent py-[14px] pl-[24px] text-[14px] leading-[1.29] text-[#fafafa] md:h-[50px] md:py-[16px] md:text-[16px] md:leading-[1.12]"
+        onClick={toggleDropdown}
+      >
+        {selectedOption}
+        <Icon
+          id="chevron-left"
+          className={`absolute right-[28px] top-1/2 size-[15px] -translate-y-1/2 transition duration-300 ${isDropdownOpen ? "rotate-90" : "-rotate-90"} fill-[#fafafa]`}
+        />
+      </div>
 
       {isDropdownOpen && (
         <ul className="absolute top-full z-[10] w-[169px] space-y-[8px] rounded-[16px] bg-[#171717] px-[24px] py-[14px] text-[12px] leading-[1.17] text-[#fafafa4c] md:w-[195px] md:text-[16px] md:leading-[1.12]">
