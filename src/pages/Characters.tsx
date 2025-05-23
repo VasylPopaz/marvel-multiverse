@@ -76,7 +76,7 @@ const Characters = () => {
           </p>
           <Link
             to="/"
-            className="btn relative z-[1] ml-auto flex h-[36px] w-[111px] items-center justify-center whitespace-nowrap rounded-full border border-[#fafafa7f] px-[20px] py-[10px] text-[12px] font-medium uppercase leading-[1.33] transition duration-500 hover:text-primaryBgColor focus-visible:text-primaryBgColor md:h-[42px] md:w-[131px] md:px-[24px] md:py-[12px] md:text-[14px] md:leading-[1.29]"
+            className="btn relative z-[1] ml-auto flex h-[36px] w-[111px] items-center justify-center overflow-hidden whitespace-nowrap rounded-full border border-[#fafafa7f] px-[20px] py-[10px] text-[12px] font-medium uppercase leading-[1.33] transition duration-500 hover:text-primaryBgColor focus-visible:text-primaryBgColor md:h-[42px] md:w-[131px] md:px-[24px] md:py-[12px] md:text-[14px] md:leading-[1.29]"
           >
             Back Home
           </Link>
