@@ -1,10 +1,7 @@
 export * from "./App";
-export * from "./Footer";
-export * from "./Header";
 export * from "./HeroSlider";
 export * from "./Icon";
 export * from "./Logo";
-export * from "./SharedLayout";
 export * from "./RandomCharactersSlider";
 export * from "./Modal";
 export * from "./CharacterDetails";
@@ -15,3 +12,4 @@ export * from "./Pagination";
 export * from "./ComicsList/ComicsList";
 export * from "./ComicsList/ComicsListItem";
 export * from "./NoHeroesFound";
+export * from "./CharacterSearchAutocomplete";
