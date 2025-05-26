@@ -262,6 +262,87 @@ main {
   }
 }
 
+.search-autocomplete {
+  width: 108px;
+  height: 28px !important;
+  z-index: 1;
+
+  @media screen and (min-width: 768px) {
+    height: 42px !important;
+    width: 170px;
+  }
+
+  & .wrapper {
+    height: 28px;
+    width: 100%;
+    background-color: transparent !important;
+    font-family: inherit !important;
+    font-size: 12px !important;
+    font-weight: 500;
+    color: var(--primary-text-color);
+    outline: none;
+    transition: border-color 0.3s ease;
+    z-index: 1;
+    border: 1px solid #fafafa4c !important;
+    border-radius: 1000px !important;
+    box-shadow: none !important;
+    transition: all 0.3s ease-in;
+
+    .line {
+      display: none;
+    }
+    ul {
+      margin-top: 6px;
+      li {
+        padding: 4px !important;
+        color: var(--primary-text-color) !important;
+      }
+      .selected {
+        background-color: var(--active-item-color) !important;
+        border-radius: 1000px !important;
+      }
+      svg {
+        display: none !important;
+      }
+    }
+
+    input {
+      padding-left: 8px;
+      color: var(--primary-text-color) !important;
+    }
+    input::placeholder {
+      color: var(--primary-text-color) !important;
+    }
+    .search-icon {
+      fill: var(--primary-text-color);
+    }
+    .clear-icon {
+      margin-top: 0;
+      svg {
+        fill: var(--primary-text-color);
+      }
+    }
+    & > div {
+      min-height: 28px !important;
+      height: 100% !important;
+    }
+
+    @media screen and (min-width: 768px) {
+      height: 42px !important;
+      font-size: 14px !important;
+      & > div {
+        min-height: 42px !important;
+      }
+    }
+  }
+
+  &:focus-within .wrapper {
+    border-color: var(--primary-text-color) !important;
+
+    box-shadow: none;
+  }
+}
+
 /* Pagination */
 .page-link {
   @apply flex size-[32px] cursor-pointer items-center justify-center rounded-[4px] border border-[#fafafa4c] bg-[#171717] transition duration-300 hover:border-transparent hover:bg-[#5558b8] focus-visible:border-transparent focus-visible:bg-[#5558b8] active:bg-[#5558b8];

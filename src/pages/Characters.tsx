@@ -1,64 +1,63 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 
-import { CharactersList, Loader, Pagination } from "../components";
+import {
+  CharactersList,
+  Loader,
+  NoHeroesFound,
+  Pagination,
+} from "../components";
 
 import { getCharacters } from "../api";
-import { useBreakpointValue } from "../hooks";
+import { useBreakpointValue, useSearchParams } from "../hooks";
 
 const Characters = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [page, setPage] = useState(1);
+  const { getSearchParam, setSearchParam } = useSearchParams();
+  const rawSearchName = getSearchParam("name");
+  const rawPage = Number(getSearchParam("page"));
 
+  const searchName = rawSearchName ? decodeURIComponent(rawSearchName) : "";
+  const pageForUrl = Number.isInteger(rawPage) && rawPage >= 1 ? rawPage : 1;
+  const pageForBackend = pageForUrl - 1;
   const charactersSectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const paramPage = Number(searchParams.get("page"));
-    const validPage = isNaN(paramPage) || paramPage < 1 ? 1 : paramPage;
-
-    if (paramPage !== page) {
-      setPage(validPage);
-      setSearchParams({ page: String(validPage) }, { replace: true });
-    }
-  }, [searchParams, page, setSearchParams]);
 
   const limit = useBreakpointValue([16, 8, 5]);
 
   const params = {
     limit,
-    offset: (page === 1 ? 0 : page) * limit,
+    offset: pageForBackend * limit,
+    ...(searchName && { nameStartsWith: searchName }),
   };
 
-  const { data, isFetching } = useQuery(
-    ["characters", params],
-    async () => {
+  const { data, isFetching } = useQuery({
+    queryKey: ["characters", rawPage, rawSearchName],
+    queryFn: () => {
       return getCharacters(params);
     },
-    {
-      keepPreviousData: true,
-      refetchOnWindowFocus: false,
-    }
-  );
-  const { totalPages, results: characters } = data ?? {
-    totalPages: 0,
-    characters: [],
-  };
-
-  useEffect(() => {
-    if (page > totalPages && totalPages > 0) {
-      setSearchParams({ page: String(totalPages) }, { replace: true });
-      setPage(totalPages);
-    }
-  }, [page, totalPages, setSearchParams]);
+    enabled: !!limit,
+    keepPreviousData: true,
+    refetchOnWindowFocus: false,
+  });
 
   useEffect(() => {
     charactersSectionRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [page]);
+  }, [rawPage]);
 
   const handlePageChange = (newPage: number) => {
-    setSearchParams({ page: String(newPage) });
+    setSearchParam("page", String(newPage));
   };
+
+  const characters = data?.results ?? [];
+  const totalPages = data?.totalPages ?? 0;
+
+  useEffect(() => {
+    if (!totalPages) return;
+
+    if (data && pageForUrl > data.totalPages) {
+      setSearchParam("page", String(data.totalPages));
+    }
+  }, [data, pageForUrl, setSearchParam, totalPages]);
 
   return (
     <>
@@ -82,14 +81,23 @@ const Characters = () => {
           </Link>
         </div>
       </section>
-      {characters ? (
+      {characters && !isFetching ? (
         <section className="py-[64px]" ref={charactersSectionRef}>
           <div className="container">
             <CharactersList characters={characters} />
-            <Pagination {...{ page, totalPages, handlePageChange }} />
+            <Pagination
+              {...{ page: pageForUrl, totalPages, handlePageChange }}
+            />
           </div>
         </section>
       ) : null}
+      {!characters && !isFetching && (
+        <section className="py-[64px]">
+          <div className="container">
+            <NoHeroesFound />
+          </div>
+        </section>
+      )}
       {isFetching && <Loader />}
     </>
   );
