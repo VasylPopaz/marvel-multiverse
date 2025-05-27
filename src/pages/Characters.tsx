@@ -20,9 +20,10 @@ const Characters = () => {
   const searchName = rawSearchName ? decodeURIComponent(rawSearchName) : "";
   const pageForUrl = Number.isInteger(rawPage) && rawPage >= 1 ? rawPage : 1;
   const pageForBackend = pageForUrl - 1;
-  const charactersSectionRef = useRef<HTMLDivElement>(null);
 
   const limit = useBreakpointValue([16, 8, 5]);
+
+  const charactersSectionRef = useRef<HTMLDivElement>(null);
 
   const params = {
     limit,
@@ -81,7 +82,7 @@ const Characters = () => {
           </Link>
         </div>
       </section>
-      {characters && !isFetching ? (
+      {characters.length ? (
         <section className="py-[64px]" ref={charactersSectionRef}>
           <div className="container">
             <CharactersList characters={characters} />
@@ -91,7 +92,7 @@ const Characters = () => {
           </div>
         </section>
       ) : null}
-      {!characters && !isFetching && (
+      {!characters.length && !isFetching && (
         <section className="py-[64px]">
           <div className="container">
             <NoHeroesFound />
