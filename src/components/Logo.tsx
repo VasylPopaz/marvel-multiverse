@@ -6,7 +6,7 @@ export const Logo = () => {
   return (
     <Link
       to="/"
-      className="inline-block py-[6px] transition duration-300 hover:scale-105 focus-visible:scale-105 active:scale-105"
+      className="inline-block py-1.5 transition duration-300 hover:scale-105 focus-visible:scale-105 active:scale-105"
     >
       <Icon
         id="logo"

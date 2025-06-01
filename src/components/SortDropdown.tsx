@@ -3,15 +3,27 @@ import { RefObject, useEffect, useRef, useState } from "react";
 import { Icon } from "../components";
 
 import { sortOptions } from "../constants";
+import { useSearchParams } from "../hooks";
 
-interface SortDropdownProps {
-  onChange: (option: string) => void;
-}
-
-export const SortDropdown = ({ onChange }: SortDropdownProps) => {
+export const SortDropdown = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("None");
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const selectedLabel =
+    sortOptions.find((o) => o.value === selectedOption)?.label ?? "None";
+
+  const { getSearchParam, setSearchParam, removeSearchParam } =
+    useSearchParams();
+
   const sortRef: RefObject<HTMLDivElement> = useRef(null);
+
+  const rawOrderBy = getSearchParam("orderBy");
+
+  useEffect(() => {
+    if (rawOrderBy) {
+      setSelectedOption(rawOrderBy);
+    }
+  }, [rawOrderBy]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -28,25 +40,26 @@ export const SortDropdown = ({ onChange }: SortDropdownProps) => {
 
   const toggleDropdown = () => setIsDropdownOpen((prev) => !prev);
 
-  const handleLabelClick = ({
-    label,
-    value,
-  }: {
-    value: string;
-    label: string;
-  }) => {
-    onChange(value);
+  const handleLabelClick = ({ value }: { value: string }) => {
     setIsDropdownOpen(false);
-    setSelectedOption(label);
+    setSelectedOption(value);
+    if (value) {
+      setSearchParam("orderBy", value);
+    } else {
+      removeSearchParam("orderBy");
+    }
   };
 
   return (
     <div ref={sortRef} className="relative w-[169px] md:w-[195px]">
+      <p className="mb-1 text-[12px] text-[#fafafa4c] md:mb-2 md:text-[14px]">
+        Order by
+      </p>
       <div
-        className="relative h-[46px] w-full cursor-pointer rounded-[100px] border-[2px] border-[#34387f] bg-transparent py-[14px] pl-[24px] text-[14px] leading-[1.29] text-[#fafafa] md:h-[50px] md:py-[16px] md:text-[16px] md:leading-[1.12]"
+        className="relative h-[46px] w-full cursor-pointer rounded-[100px] border-[2px] border-[#34387f] bg-transparent py-3.5 pl-6 text-[14px] leading-[1.29] text-[#fafafa] md:h-[50px] md:py-[16px] md:text-[16px] md:leading-[1.12]"
         onClick={toggleDropdown}
       >
-        {selectedOption}
+        {selectedLabel}
         <Icon
           id="chevron-left"
           className={`absolute right-[28px] top-1/2 size-[15px] -translate-y-1/2 transition duration-300 ${isDropdownOpen ? "rotate-90" : "-rotate-90"} fill-[#fafafa]`}
@@ -54,12 +67,17 @@ export const SortDropdown = ({ onChange }: SortDropdownProps) => {
       </div>
 
       {isDropdownOpen && (
-        <ul className="absolute top-full z-[10] w-[169px] space-y-[8px] rounded-[16px] bg-[#171717] px-[24px] py-[14px] text-[12px] leading-[1.17] text-[#fafafa4c] md:w-[195px] md:text-[16px] md:leading-[1.12]">
-          {sortOptions.map((option, index) => (
+        <ul
+          className="absolute top-full z-[10] w-[169px] space-y-2 rounded-[16px] bg-[#171717] px-6 py-3.5 text-[12px] leading-[1.17] text-[#fafafa4c] md:w-[195px] md:text-[16px] md:leading-[1.12]"
+          role="listbox"
+        >
+          {sortOptions.map((option) => (
             <li
-              key={index}
+              key={option.value}
               onClick={() => handleLabelClick(option)}
-              className={`cursor-pointer space-y-[8px] transition duration-300 hover:text-[#b5b2b2] ${selectedOption === option.label ? "text-[#fafafa]" : ""}`}
+              className={`cursor-pointer space-y-2 transition duration-300 hover:text-[#b5b2b2] ${selectedOption === option.value ? "text-[#fafafa]" : ""}`}
+              role="option"
+              aria-selected={selectedOption === option.value}
             >
               {option.label}
             </li>

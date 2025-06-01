@@ -8,7 +8,7 @@ interface CharactersListProps {
 
 export const CharactersList = ({ characters }: CharactersListProps) => {
   return (
-    <ul className="mb-[40px] flex flex-wrap gap-x-[16px] gap-y-[40px] md:mb-[64px] md:gap-[32px] lg:gap-x-[16px] lg:gap-y-[64px]">
+    <ul className="mb-10 flex flex-wrap gap-x-4 gap-y-10 md:mb-16 md:gap-8 lg:gap-x-4 lg:gap-y-16">
       {characters.map((character) => (
         <CharactersListItem key={character.id} character={character} />
       ))}

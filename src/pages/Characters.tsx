@@ -11,15 +11,18 @@ import {
 
 import { getCharacters } from "../api";
 import { useBreakpointValue, useSearchParams } from "../hooks";
+import { Filters } from "../components/Filters";
 
 const Characters = () => {
   const { getSearchParam, setSearchParam } = useSearchParams();
   const rawSearchName = getSearchParam("name");
   const rawPage = Number(getSearchParam("page"));
+  const rawOrderBy = getSearchParam("orderBy");
 
   const searchName = rawSearchName ? decodeURIComponent(rawSearchName) : "";
   const pageForUrl = Number.isInteger(rawPage) && rawPage >= 1 ? rawPage : 1;
   const pageForBackend = pageForUrl - 1;
+  const orderBy = rawOrderBy ? decodeURIComponent(rawOrderBy) : "";
 
   const limit = useBreakpointValue([16, 8, 5]);
 
@@ -29,10 +32,11 @@ const Characters = () => {
     limit,
     offset: pageForBackend * limit,
     ...(searchName && { nameStartsWith: searchName }),
+    ...(orderBy && { orderBy }),
   };
 
   const { data, isFetching } = useQuery({
-    queryKey: ["characters", rawPage, rawSearchName],
+    queryKey: ["characters", rawPage, rawSearchName, rawOrderBy],
     queryFn: () => {
       return getCharacters(params);
     },
@@ -62,12 +66,12 @@ const Characters = () => {
 
   return (
     <>
-      <section className="characters-hero-bg pb-[20px] pt-[150px] md:pb-[32px] md:pt-[188px] lg:pb-[64px]">
+      <section className="characters-hero-bg pb-5 pt-[150px] md:pb-[32px] md:pt-[188px] lg:pb-16">
         <div className="container">
-          <p className="mb-[14px] uppercase leading-[1.29] text-[#ffffffb2] md:mb-[26px] md:text-[18px] md:leading-[1.6] lg:mb-[16px]">
+          <p className="mb-3.5 uppercase leading-[1.29] text-[#ffffffb2] md:mb-[26px] md:text-[18px] md:leading-[1.6] lg:mb-4">
             Web-based platform
           </p>
-          <h1 className="mb-4 text-[60px] font-medium leading-[1] tracking-[-0.02em] md:mb-[16px] md:text-[128px] lg:mb-[18px] lg:text-[150px]">
+          <h1 className="mb-4 text-[60px] font-medium leading-[1] tracking-[-0.02em] md:text-[128px] lg:mb-[18px] lg:text-[150px]">
             Characters
           </h1>
           <p className="mx-auto mb-[65px] text-[16px] leading-[1.25] tracking-[0.02em] md:mb-[188px] md:max-w-[469px] lg:mb-[145px] lg:ml-[88px] lg:max-w-[436px]">
@@ -76,29 +80,28 @@ const Characters = () => {
           </p>
           <Link
             to="/"
-            className="btn relative z-[1] ml-auto flex h-[36px] w-[111px] items-center justify-center overflow-hidden whitespace-nowrap rounded-full border border-[#fafafa7f] px-[20px] py-[10px] text-[12px] font-medium uppercase leading-[1.33] transition duration-500 hover:text-primaryBgColor focus-visible:text-primaryBgColor md:h-[42px] md:w-[131px] md:px-[24px] md:py-[12px] md:text-[14px] md:leading-[1.29]"
+            className="btn relative z-[1] ml-auto flex h-9 w-[111px] items-center justify-center overflow-hidden whitespace-nowrap rounded-full border border-[#fafafa7f] px-5 py-2.5 text-[12px] font-medium uppercase leading-[1.33] transition duration-500 hover:text-primaryBgColor focus-visible:text-primaryBgColor md:h-[42px] md:w-[131px] md:px-6 md:py-3 md:text-[14px] md:leading-[1.29]"
           >
             Back Home
           </Link>
         </div>
       </section>
-      {characters.length ? (
-        <section className="py-[64px]" ref={charactersSectionRef}>
-          <div className="container">
-            <CharactersList characters={characters} />
-            <Pagination
-              {...{ page: pageForUrl, totalPages, handlePageChange }}
-            />
-          </div>
-        </section>
-      ) : null}
-      {!characters.length && !isFetching && (
-        <section className="py-[64px]">
-          <div className="container">
-            <NoHeroesFound />
-          </div>
-        </section>
-      )}
+
+      <section className="py-[64px]" ref={charactersSectionRef}>
+        <div className="container">
+          <Filters />
+          {characters.length ? (
+            <>
+              {" "}
+              <CharactersList characters={characters} />
+              <Pagination
+                {...{ page: pageForUrl, totalPages, handlePageChange }}
+              />
+            </>
+          ) : null}
+        </div>
+      </section>
+      {!characters.length && !isFetching && <NoHeroesFound />}
       {isFetching && <Loader />}
     </>
   );

@@ -2,7 +2,7 @@ import { noResultsImg1x, noResultsImg2x } from "../assets";
 
 export const NoHeroesFound = () => {
   return (
-    <div className="relative">
+    <div className="container relative py-16">
       <img
         srcSet={`${noResultsImg1x} 1x, ${noResultsImg2x} 2x`}
         src={noResultsImg1x}

@@ -71,7 +71,7 @@ export const RandomCharactersSlider = ({
   return (
     <>
       {characters && activeCharacter && (
-        <div className="flex flex-col gap-[32px] lg:flex-row lg:items-center">
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-center">
           <div
             className="group size-[335px] shrink-0 cursor-pointer overflow-hidden rounded-[8px] md:size-[704px] lg:h-[704px] lg:w-[496px]"
             onClick={() => handleOpenModal(activeCharacter)}
@@ -94,7 +94,7 @@ export const RandomCharactersSlider = ({
                 }`}
                 onClick={() => handleCharacterClick(character, index)}
               >
-                <h3 className="mb-[14px] text-[18px] font-medium leading-[1.33] tracking-[-0.02em] md:text-[24px] md:leading-[1]">
+                <h3 className="mb-3.5 text-[18px] font-medium leading-[1.33] tracking-[-0.02em] md:text-[24px] md:leading-[1]">
                   {character.name.replace(/([(/]).*/, "")}
                 </h3>
                 <p className="line-clamp-5 text-[14px] leading-[1.29] md:text-[16px] md:leading-[1.12]">

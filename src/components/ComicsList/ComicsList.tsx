@@ -8,7 +8,7 @@ interface ComicsListProps {
 
 export const ComicsList = ({ comics }: ComicsListProps) => {
   return (
-    <ul className="flex flex-col gap-[32px] md:flex-row md:flex-wrap md:gap-x-[18px]">
+    <ul className="flex flex-col gap-8 md:flex-row md:flex-wrap md:gap-x-[18px]">
       {comics.map((comic) => (
         <ComicsListItem key={comic.id} comic={comic} />
       ))}

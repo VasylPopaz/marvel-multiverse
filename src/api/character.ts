@@ -11,7 +11,7 @@ interface Params {
   offset: number;
   nameStartsWith?: string;
   modifiedSince?: Date;
-  orderBy?: "name" | "-name" | "modified" | "-modified";
+  orderBy?: string;
 }
 
 export const getCharacters = wrapErrorHandling<CharactersResponse, Params>(

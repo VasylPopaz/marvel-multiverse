@@ -31,11 +31,9 @@ export const Pagination = ({
       pageRangeDisplayed={1}
       pageCount={totalPages}
       breakLabel="..."
-      previousLabel={
-        <Icon id="chevron-left" className="size-[12px] fill-white" />
-      }
-      nextLabel={<Icon id="chevron-right" className="size-[12px] fill-white" />}
-      containerClassName=" flex justify-center items-center gap-[8px] text-[14px] font-medium leading-[1.29]"
+      previousLabel={<Icon id="chevron-left" className="size-3 fill-white" />}
+      nextLabel={<Icon id="chevron-right" className="size-3 fill-white" />}
+      containerClassName=" flex justify-center items-center gap-2 text-[14px] font-medium leading-[1.29]"
       pageClassName="page-item"
       pageLinkClassName="page-link"
       activeClassName="active-pg"
