@@ -1,5 +1,5 @@
-import { useLocation, useNavigate } from "react-router-dom";
 import { useMemo } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type SetSearchParamsOptions = {
   resetPage?: boolean;

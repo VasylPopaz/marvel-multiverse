@@ -13,3 +13,5 @@ export * from "./ComicsList/ComicsList";
 export * from "./ComicsList/ComicsListItem";
 export * from "./NoHeroesFound";
 export * from "./CharacterSearchAutocomplete";
+export * from "./SortDropdown";
+export * from "./SearchInput";
