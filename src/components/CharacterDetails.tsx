@@ -37,7 +37,7 @@ export const CharacterDetails = ({ character }: CharacterDetailsProps) => {
           height={387}
           className="mx-auto mb-4 h-[387px] rounded-[8px] object-cover md:h-[445px] md:w-[332px] lg:m-0 lg:h-[610px] lg:w-[400px]"
         />
-        <div className="scrollbar max-h-[35dvh] rounded-[8px] bg-[#171717] px-4 py-8 md:max-h-[28dvh] lg:max-h-[610px] lg:w-[530px]">
+        <div className="scrollbar max-h-[35dvh] rounded-[8px] bg-[#171717] px-4 pb-8 pt-4 md:max-h-[28dvh] md:py-8 lg:max-h-[610px] lg:w-[530px]">
           <div className="mb-8">
             <div className="mb-4 flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
               <h3 className="text-[18px] font-medium leading-[1.33] tracking-[-0.02em] md:text-[24px] md:leading-[1]">

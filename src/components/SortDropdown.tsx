@@ -51,12 +51,12 @@ export const SortDropdown = () => {
   };
 
   return (
-    <div ref={sortRef} className="relative w-[169px] md:w-[195px]">
+    <div ref={sortRef} className="relative w-[169px] md:w-[185px]">
       <p className="mb-1 text-[12px] text-[#fafafa4c] md:mb-2 md:text-[14px]">
         Order by
       </p>
       <div
-        className="relative h-[46px] w-full cursor-pointer rounded-[100px] border-[2px] border-[#34387f] bg-transparent py-3.5 pl-6 text-[14px] leading-[1.29] text-[#fafafa] md:h-[50px] md:py-[16px] md:text-[16px] md:leading-[1.12]"
+        className={`relative h-[46px] w-full cursor-pointer rounded-[100px] border-[2px] border-[#34387f] bg-transparent py-3.5 pl-6 text-[14px] leading-[1.29] text-[#fafafa] md:h-[50px] md:py-[16px] md:text-[16px] md:leading-[1.12] ${isDropdownOpen ? "border-primaryTextColor" : ""}`}
         onClick={toggleDropdown}
       >
         {selectedLabel}
@@ -68,7 +68,7 @@ export const SortDropdown = () => {
 
       {isDropdownOpen && (
         <ul
-          className="absolute top-full z-[10] w-[169px] space-y-2 rounded-[16px] bg-[#171717] px-6 py-3.5 text-[12px] leading-[1.17] text-[#fafafa4c] md:w-[195px] md:text-[16px] md:leading-[1.12]"
+          className="absolute top-full z-[10] w-[169px] space-y-2 rounded-[16px] bg-[#171717] px-6 py-3.5 text-[12px] leading-[1.17] text-[#fafafa4c] md:w-[185px] md:text-[16px] md:leading-[1.12]"
           role="listbox"
         >
           {sortOptions.map((option) => (
