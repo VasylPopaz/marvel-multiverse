@@ -18,6 +18,7 @@ const Characters = () => {
   const rawSearchName = getSearchParam("name");
   const rawPage = Number(getSearchParam("page"));
   const rawOrderBy = getSearchParam("orderBy");
+  const rawComics = getSearchParam("comics");
 
   const searchName = rawSearchName ? decodeURIComponent(rawSearchName) : "";
   const pageForUrl = Number.isInteger(rawPage) && rawPage >= 1 ? rawPage : 1;
@@ -33,10 +34,11 @@ const Characters = () => {
     offset: pageForBackend * limit,
     ...(searchName && { nameStartsWith: searchName }),
     ...(orderBy && { orderBy }),
+    ...(rawComics && { comics: rawComics }),
   };
 
   const { data, isFetching } = useQuery({
-    queryKey: ["characters", rawPage, rawSearchName, rawOrderBy],
+    queryKey: ["characters", rawPage, rawSearchName, rawOrderBy, rawComics],
     queryFn: () => {
       return getCharacters(params);
     },
