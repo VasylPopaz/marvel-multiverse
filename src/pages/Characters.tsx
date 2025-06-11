@@ -7,23 +7,25 @@ import {
   Loader,
   NoHeroesFound,
   Pagination,
+  Filters,
 } from "../components";
 
 import { getCharacters } from "../api";
 import { useBreakpointValue, useSearchParams } from "../hooks";
-import { Filters } from "../components/Filters";
 
 const Characters = () => {
   const { getSearchParam, setSearchParam } = useSearchParams();
   const rawSearchName = getSearchParam("name");
   const rawPage = Number(getSearchParam("page"));
   const rawOrderBy = getSearchParam("orderBy");
+  const rawModifiedSince = getSearchParam("modifiedSince");
   const rawComics = getSearchParam("comics");
 
   const searchName = rawSearchName ? decodeURIComponent(rawSearchName) : "";
   const pageForUrl = Number.isInteger(rawPage) && rawPage >= 1 ? rawPage : 1;
   const pageForBackend = pageForUrl - 1;
   const orderBy = rawOrderBy ? decodeURIComponent(rawOrderBy) : "";
+  const modifiedSince = rawModifiedSince ? new Date(rawModifiedSince) : null;
 
   const limit = useBreakpointValue([16, 8, 5]);
 
@@ -34,11 +36,19 @@ const Characters = () => {
     offset: pageForBackend * limit,
     ...(searchName && { nameStartsWith: searchName }),
     ...(orderBy && { orderBy }),
+    ...(modifiedSince && { modifiedSince }),
     ...(rawComics && { comics: rawComics }),
   };
 
   const { data, isFetching } = useQuery({
-    queryKey: ["characters", rawPage, rawSearchName, rawOrderBy, rawComics],
+    queryKey: [
+      "characters",
+      rawPage,
+      rawSearchName,
+      rawOrderBy,
+      rawModifiedSince,
+      rawComics,
+    ],
     queryFn: () => {
       return getCharacters(params);
     },

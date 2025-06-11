@@ -15,3 +15,4 @@ export * from "./NoHeroesFound";
 export * from "./CharacterSearchAutocomplete";
 export * from "./SortDropdown";
 export * from "./SearchInput";
+export * from "./Filters";
