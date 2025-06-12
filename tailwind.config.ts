@@ -16,6 +16,7 @@ export default {
         primaryBgColor: "var(--primary-bg-color)",
         primaryTextColor: "var(--primary-text-color)",
         activeItemColor: "var(--active-item-color)",
+        accentColor: "var(--accent-color)",
       },
       animation: {
         spinPulse: "spinPulse 2.5s linear infinite",

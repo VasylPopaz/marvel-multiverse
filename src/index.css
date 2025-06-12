@@ -5,6 +5,7 @@
 :root {
   --primary-bg-color: #0c0b0b;
   --primary-text-color: #fafafa;
+  --accent-color: #34387f;
 }
 
 @layer base {
@@ -228,8 +229,26 @@ main {
   }
 }
 
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px var(--primary-bg-color) inset !important; /* фон, совпадающий с обычным инпутом */
+  -webkit-box-shadow: 0 0 0 1000px var(--primary-bg-color) inset !important;
+  -webkit-text-fill-color: var(--primary-text-color) !important;
+  caret-color: var(--primary-text-color) !important;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .scrollbar {
-  --thumb-color: #34387f;
+  --thumb-color: var(--accent-color);
   --track-color: transparent;
   overflow: auto;
   scrollbar-color: auto !important;
@@ -350,10 +369,10 @@ main {
 
 .page-link-prev,
 .page-link-next {
-  @apply border-transparent bg-[#34387f];
+  @apply bg-accentColor border-transparent;
 }
 .active-pg .page-link {
-  @apply border-2 border-[#34387f];
+  @apply border-accentColor border-2;
 }
 .page-item.disabled .page-link,
 .page-link:disabled {
@@ -361,14 +380,11 @@ main {
 }
 
 /* Date picker */
-.fixed-height-calendar {
-  height: 236px;
-}
 .react-datepicker-popper {
-  @apply !-left-8 lg:!left-auto;
+  @apply !-left-8 md:!left-auto;
 }
 .react-datepicker__input-container input {
-  @apply relative h-[46px] w-[158px] cursor-pointer rounded-[100px] border-[2px] border-[#34387f] bg-transparent py-3.5 pl-6 text-[14px] leading-[1.29] text-[#fafafa] outline-none transition duration-300 placeholder:text-primaryTextColor hover:border-primaryTextColor focus-visible:border-primaryTextColor md:h-[50px] md:w-[120px] lg:w-[170px];
+  @apply border-accentColor relative h-[46px] w-[158px] cursor-pointer rounded-[100px] border-[2px] bg-transparent py-3.5 pl-6 text-[14px] leading-[1.29] text-[#fafafa] outline-none transition duration-300 placeholder:text-primaryTextColor hover:border-primaryTextColor focus-visible:border-primaryTextColor md:h-[50px] md:w-[120px] md:pl-3 lg:w-[170px];
 }
 .react-datepicker {
   @apply !rounded-[30px] !border-none !bg-[#171717] !text-primaryTextColor;
@@ -381,17 +397,28 @@ main {
   @apply !text-primaryTextColor;
 }
 .react-datepicker__day {
-  @apply !text-primaryTextColor transition duration-300 hover:!bg-[#34387f];
+  @apply hover:!bg-accentColor !text-primaryTextColor transition duration-300;
 }
 .react-datepicker__day--keyboard-selected {
-  @apply !bg-[#34387f];
+  @apply !bg-accentColor;
 }
 .react-datepicker__day--selected {
   @apply !bg-gray-500 !font-semibold;
 }
+.react-datepicker__day--keyboard-selected:not(
+    .react-datepicker__day--selected
+  ) {
+  @apply !bg-transparent !text-inherit;
+}
+.react-datepicker__day--keyboard-selected:not(
+    .react-datepicker__day--selected
+  ):hover {
+  @apply !bg-accentColor !text-primaryTextColor;
+}
 .react-datepicker__tab-loop {
   @apply absolute;
 }
-.react-datepicker__triangle {
-  @apply hidden;
+.react-datepicker__day--outside-month {
+  visibility: hidden;
+  pointer-events: none;
 }

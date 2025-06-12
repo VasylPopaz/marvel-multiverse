@@ -25,7 +25,7 @@ export const SearchInput = ({
       {label}
       <input
         type="text"
-        className={`h-[46px] w-full rounded-[1000px] border-2 border-[#34387f] py-3.5 pl-6 pr-9 text-[12px] leading-[1.17] text-primaryTextColor outline-none transition duration-300 placeholder:text-primaryTextColor focus-visible:border-primaryTextColor md:h-[50px] md:py-4 md:pr-6 md:text-[14px] md:leading-[1.29] lg:z-[1] ${className}`}
+        className={`border-accentColor h-[46px] w-full rounded-[1000px] border-2 py-3.5 pl-6 pr-9 text-[12px] leading-[1.17] text-primaryTextColor outline-none transition duration-300 placeholder:text-primaryTextColor focus-visible:border-primaryTextColor md:h-[50px] md:py-4 md:pr-6 md:text-[14px] md:leading-[1.29] lg:z-[1] ${className}`}
         {...register(name)}
         {...props}
       />

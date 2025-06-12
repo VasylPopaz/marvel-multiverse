@@ -90,7 +90,7 @@ export const RandomCharactersSlider = ({
               <li
                 key={character.id}
                 className={`border-[rgba(250, 250, 250, 0.2)] custom-border group relative cursor-pointer border-b pb-[32px] transition duration-100 ${
-                  character.id === activeCharacter.id ? "text-[#34387f]" : ""
+                  character.id === activeCharacter.id ? "text-accentColor" : ""
                 }`}
                 onClick={() => handleCharacterClick(character, index)}
               >
