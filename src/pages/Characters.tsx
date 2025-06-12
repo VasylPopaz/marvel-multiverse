@@ -58,8 +58,10 @@ const Characters = () => {
   });
 
   useEffect(() => {
-    charactersSectionRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [rawPage]);
+    if (charactersSectionRef.current && data?.results.length) {
+      charactersSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [data?.results.length, rawPage]);
 
   const handlePageChange = (newPage: number) => {
     setSearchParam("page", String(newPage));

@@ -59,11 +59,16 @@ export const useSearchParams = () => {
     navigate(`${location.pathname}?${params.toString()}`, { replace: true });
   };
 
+  const removeAllSearchParams = () => {
+    navigate(`${location.pathname}`, { replace: true });
+  };
+
   return {
     getSearchParam,
     getAllParams,
     setSearchParam,
     setSearchParams,
     removeSearchParam,
+    removeAllSearchParams,
   };
 };
