@@ -56,7 +56,7 @@ export const SortDropdown = () => {
         Order by
       </p>
       <div
-        className={`border-accentColor relative h-[46px] w-full cursor-pointer rounded-[100px] border-[2px] bg-transparent py-3.5 pl-6 text-[14px] leading-[1.29] text-[#fafafa] transition duration-300 hover:border-primaryTextColor md:h-[50px] md:py-[16px] md:text-[16px] md:leading-[1.12] ${isDropdownOpen ? "!border-primaryTextColor" : ""}`}
+        className={`relative h-[46px] w-full cursor-pointer rounded-[100px] border-[2px] border-accentColor bg-transparent py-3.5 pl-6 text-[14px] leading-[1.29] text-[#fafafa] transition duration-300 hover:border-primaryTextColor md:h-[50px] md:py-[16px] md:text-[16px] md:leading-[1.12] ${isDropdownOpen ? "!border-primaryTextColor" : ""}`}
         onClick={toggleDropdown}
       >
         {selectedLabel}

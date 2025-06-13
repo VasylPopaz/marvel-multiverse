@@ -58,7 +58,7 @@ export const Filters = () => {
             labelClassName="md:w-[180px]"
           />
           <SearchInput
-            label="Name Starts With"
+            label="Name starts with"
             name="nameStartsWith"
             placeholder="Enter text"
             className="bg-transparent"
@@ -81,7 +81,7 @@ export const Filters = () => {
       </div>
       <button
         type="button"
-        className="border-accentColor flex h-[46px] items-center justify-center gap-4 rounded-full border-2 bg-transparent p-1 transition duration-300 hover:border-primaryTextColor focus-visible:border-primaryTextColor md:mb-2 md:h-[40px] md:w-[40px] lg:m-0 lg:h-[50px] lg:w-[50px]"
+        className="flex h-[46px] items-center justify-center gap-4 rounded-full border-2 border-accentColor bg-transparent p-1 transition duration-300 hover:border-primaryTextColor focus-visible:border-primaryTextColor md:mb-2 md:h-[40px] md:w-[40px] lg:m-0 lg:h-[50px] lg:w-[50px]"
         onClick={removeAllSearchParams}
       >
         <span className="md:hidden">Reset filters</span>{" "}

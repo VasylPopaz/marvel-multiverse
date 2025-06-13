@@ -25,7 +25,7 @@ export const SearchInput = ({
       {label}
       <input
         type="text"
-        className={`border-accentColor h-[46px] w-full rounded-[1000px] border-2 py-3.5 pl-6 pr-9 text-[12px] leading-[1.17] text-primaryTextColor outline-none transition duration-300 placeholder:text-primaryTextColor focus-visible:border-primaryTextColor md:h-[50px] md:py-4 md:pr-6 md:text-[14px] md:leading-[1.29] lg:z-[1] ${className}`}
+        className={`h-[46px] w-full rounded-[1000px] border-2 border-accentColor py-3.5 pl-6 pr-9 text-[12px] leading-[1.17] text-primaryTextColor outline-none transition duration-300 placeholder:text-primaryTextColor focus-visible:border-primaryTextColor md:h-[50px] md:py-4 md:pr-10 md:text-[14px] md:leading-[1.29] lg:z-[1] ${className}`}
         {...register(name)}
         {...props}
       />
@@ -33,7 +33,7 @@ export const SearchInput = ({
         id="search"
         width={18}
         height={18}
-        className="absolute bottom-1.5 right-[18px] z-[1] -translate-y-1/2 fill-transparent stroke-white md:right-6 lg:h-[18px] lg:w-[18px]"
+        className="absolute bottom-1.5 right-4 z-[1] -translate-y-1/2 fill-transparent stroke-white md:right-6 lg:h-[18px] lg:w-[18px]"
       />
     </label>
   );

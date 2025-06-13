@@ -89,8 +89,8 @@ export const RandomCharactersSlider = ({
             {characters.map((character, index) => (
               <li
                 key={character.id}
-                className={`border-[rgba(250, 250, 250, 0.2)] custom-border group relative cursor-pointer border-b pb-[32px] transition duration-100 ${
-                  character.id === activeCharacter.id ? "text-accentColor" : ""
+                className={`border-[rgba(250, 250, 250, 0.2)] relative cursor-pointer border-b pb-[32px] transition duration-150 hover:text-accentColor focus-visible:text-accentColor ${
+                  character.id === activeCharacter.id ? "custom-border" : ""
                 }`}
                 onClick={() => handleCharacterClick(character, index)}
               >

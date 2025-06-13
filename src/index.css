@@ -156,8 +156,8 @@ main {
   }
 }
 
-.custom-border:hover::before,
-.custom-border:focus-visible::before {
+.custom-border::before,
+.custom-border::before {
   opacity: 1;
 }
 .link::after {
@@ -369,10 +369,10 @@ input[type="number"] {
 
 .page-link-prev,
 .page-link-next {
-  @apply bg-accentColor border-transparent;
+  @apply border-transparent bg-accentColor;
 }
 .active-pg .page-link {
-  @apply border-accentColor border-2;
+  @apply border-2 border-accentColor;
 }
 .page-item.disabled .page-link,
 .page-link:disabled {
@@ -384,7 +384,7 @@ input[type="number"] {
   @apply !-left-8 md:!left-auto;
 }
 .react-datepicker__input-container input {
-  @apply border-accentColor relative h-[46px] w-[158px] cursor-pointer rounded-[100px] border-[2px] bg-transparent py-3.5 pl-6 text-[14px] leading-[1.29] text-[#fafafa] outline-none transition duration-300 placeholder:text-primaryTextColor hover:border-primaryTextColor focus-visible:border-primaryTextColor md:h-[50px] md:w-[120px] md:pl-3 lg:w-[170px];
+  @apply relative h-[46px] w-[158px] cursor-pointer rounded-[100px] border-[2px] border-accentColor bg-transparent py-3.5 pl-6 text-[14px] leading-[1.29] text-[#fafafa] outline-none transition duration-300 placeholder:text-primaryTextColor hover:border-primaryTextColor focus-visible:border-primaryTextColor md:h-[50px] md:w-[120px] md:pl-3 lg:w-[170px];
 }
 .react-datepicker {
   @apply !rounded-[30px] !border-none !bg-[#171717] !text-primaryTextColor;
@@ -397,7 +397,7 @@ input[type="number"] {
   @apply !text-primaryTextColor;
 }
 .react-datepicker__day {
-  @apply hover:!bg-accentColor !text-primaryTextColor transition duration-300;
+  @apply !text-primaryTextColor transition duration-300 hover:!bg-accentColor;
 }
 .react-datepicker__day--keyboard-selected {
   @apply !bg-accentColor;
